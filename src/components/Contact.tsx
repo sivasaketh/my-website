@@ -58,7 +58,7 @@ export default function Contact() {
             <div>
               <p className="text-xs text-gray-500 uppercase tracking-wider mb-0.5">LinkedIn</p>
               <p className="text-white text-sm font-medium group-hover:text-indigo-300 transition-colors">
-                linkedin.com/in/sivasaketh
+                https://www.linkedin.com/in/narasimha-siva-saketh-emani-4943067b/
               </p>
             </div>
           </a>

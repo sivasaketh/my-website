@@ -4,7 +4,7 @@ export const personal = {
   title: 'Senior Backend Engineer',
   email: 'saketh.emani@gmail.com',
   phone: '+1 (480) 462-9769',
-  linkedin: 'https://linkedin.com/in/sivasaketh',
+  linkedin: 'https://www.linkedin.com/in/narasimha-siva-saketh-emani-4943067b/',
   github: 'https://github.com/sivasaketh',
   summary:
     'Senior Backend Engineer with 6+ years of experience in system design, scalable backend architecture, and distributed systems using Node.js, TypeScript, Python, and AWS. Proven expertise in microservices, high availability systems, RESTful API design, and production performance optimization supporting 250,000+ API requests per day. Experienced in observability, CI/CD pipelines, and cloud infrastructure.',
