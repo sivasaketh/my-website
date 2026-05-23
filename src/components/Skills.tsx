@@ -1,28 +1,52 @@
+import { useState } from 'react'
 import { skills } from '../data/resume'
 
+const ALL = 'All'
+
 export default function Skills() {
+  const categories = [ALL, ...skills.map((s) => s.category)]
+  const [active, setActive] = useState(ALL)
+
+  const filtered = active === ALL ? skills : skills.filter((s) => s.category === active)
+
   return (
-    <section id="skills" className="section-padding border-t border-white/5">
+    <section id="skills" className="section-padding border-t border-gray-200 dark:border-white/5">
       <div className="container-max">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-3">
           Technical Skills
         </h2>
-        <div className="w-12 h-1 bg-indigo-500 rounded mb-10" />
+        <div className="w-12 h-1 bg-indigo-500 rounded mb-6" />
+
+        <div className="flex flex-wrap gap-2 mb-8">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActive(cat)}
+              className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+                active === cat
+                  ? 'bg-indigo-600 text-white'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-white/5 hover:text-gray-900 dark:hover:text-white'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
 
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-5">
-          {skills.map(({ category, items }) => (
+          {filtered.map(({ category, items }) => (
             <div
               key={category}
-              className="bg-gray-900 border border-white/5 rounded-xl p-5 sm:p-6 hover:border-indigo-500/30 transition-colors"
+              className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-white/5 rounded-xl p-5 sm:p-6 hover:border-indigo-400 dark:hover:border-indigo-500/30 transition-colors"
             >
-              <h3 className="text-sm font-semibold text-indigo-400 uppercase tracking-widest mb-4">
+              <h3 className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-4">
                 {category}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {items.map((skill) => (
                   <span
                     key={skill}
-                    className="text-xs sm:text-sm bg-gray-800 border border-white/5 text-gray-300 px-3 py-1 rounded-full"
+                    className="text-xs sm:text-sm bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-white/5 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full"
                   >
                     {skill}
                   </span>

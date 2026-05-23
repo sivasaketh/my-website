@@ -2,9 +2,9 @@ import { projects } from '../data/resume'
 
 export default function Projects() {
   return (
-    <section id="projects" className="section-padding border-t border-white/5">
+    <section id="projects" className="section-padding border-t border-gray-200 dark:border-white/5">
       <div className="container-max">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-3">
           Projects
         </h2>
         <div className="w-12 h-1 bg-indigo-500 rounded mb-10" />
@@ -13,10 +13,10 @@ export default function Projects() {
           {projects.map((project) => (
             <div
               key={project.name}
-              className="bg-gray-900 border border-white/5 rounded-xl p-5 sm:p-7 flex flex-col hover:border-indigo-500/30 transition-colors group"
+              className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-white/5 rounded-xl p-5 sm:p-7 flex flex-col hover:border-indigo-400 dark:hover:border-indigo-500/30 transition-colors group"
             >
               <div className="flex items-start justify-between gap-3 mb-3">
-                <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-indigo-300 transition-colors">
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors">
                   {project.name}
                 </h3>
                 {project.github && (
@@ -24,7 +24,7 @@ export default function Projects() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-500 hover:text-white transition-colors shrink-0"
+                    className="text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors shrink-0"
                     aria-label="GitHub"
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -33,14 +33,14 @@ export default function Projects() {
                   </a>
                 )}
               </div>
-              <p className="text-gray-400 text-sm leading-relaxed mb-5 flex-1">
+              <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-5 flex-1">
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 px-2.5 py-0.5 rounded-full"
+                    className="text-xs bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20 text-indigo-600 dark:text-indigo-300 px-2.5 py-0.5 rounded-full"
                   >
                     {tag}
                   </span>

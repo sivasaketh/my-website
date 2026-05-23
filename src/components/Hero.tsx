@@ -16,19 +16,19 @@ export default function Hero() {
       </div>
 
       <div className="container-max w-full animate-fade-in">
-        <p className="font-mono text-indigo-400 text-sm sm:text-base mb-4 tracking-widest uppercase">
+        <p className="font-mono text-indigo-600 dark:text-indigo-400 text-sm sm:text-base mb-4 tracking-widest uppercase">
           Hello, I&apos;m
         </p>
-        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-tight mb-4">
+        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
           {personal.shortName}
         </h1>
-        <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-400 mb-6">
+        <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-600 dark:text-gray-400 mb-6">
           {personal.title}
         </h2>
-        <p className="text-gray-400 text-base sm:text-lg max-w-2xl leading-relaxed mb-10">
+        <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg max-w-2xl leading-relaxed mb-10">
           Building scalable distributed systems and microservices with{' '}
-          <span className="text-indigo-400 font-medium">Node.js, TypeScript &amp; AWS</span>.
-          Supporting <span className="text-indigo-400 font-medium">250,000+ API requests/day</span>{' '}
+          <span className="text-indigo-600 dark:text-indigo-400 font-medium">Node.js, TypeScript &amp; AWS</span>.
+          Supporting <span className="text-indigo-600 dark:text-indigo-400 font-medium">250,000+ API requests/day</span>{' '}
           with a focus on reliability and performance.
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
@@ -40,7 +40,7 @@ export default function Hero() {
           </button>
           <button
             onClick={() => scrollTo('experience')}
-            className="px-7 py-3 border border-white/20 hover:border-indigo-400/60 text-gray-300 hover:text-white font-semibold rounded-lg transition-colors text-sm sm:text-base text-center"
+            className="px-7 py-3 border border-gray-300 dark:border-white/20 hover:border-indigo-400 dark:hover:border-indigo-400/60 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-semibold rounded-lg transition-colors text-sm sm:text-base text-center"
           >
             View my work
           </button>
@@ -52,7 +52,7 @@ export default function Hero() {
             href={personal.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-500 hover:text-white transition-colors"
+            className="text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
             aria-label="GitHub"
           >
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -63,7 +63,7 @@ export default function Hero() {
             href={personal.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-500 hover:text-white transition-colors"
+            className="text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
             aria-label="LinkedIn"
           >
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -72,7 +72,7 @@ export default function Hero() {
           </a>
           <a
             href={`mailto:${personal.email}`}
-            className="text-gray-500 hover:text-white transition-colors"
+            className="text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
             aria-label="Email"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -83,7 +83,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 text-gray-600">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 text-gray-400 dark:text-gray-600">
         <span className="text-xs tracking-widest uppercase">Scroll</span>
         <svg className="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
