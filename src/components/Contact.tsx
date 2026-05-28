@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { personal } from '../data/resume'
-
-type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
+import { submitContact, resetContact } from '../store/slices/contactSlice'
 
 interface FormFields {
   name: string
@@ -10,20 +10,20 @@ interface FormFields {
 }
 
 export default function Contact() {
+  const dispatch = useAppDispatch()
+  const status = useAppSelector((s) => s.contact.status)
   const [fields, setFields] = useState<FormFields>({ name: '', email: '', message: '' })
-  const [status, setStatus] = useState<FormStatus>('idle')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFields((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setStatus('submitting')
-    setTimeout(() => {
-      setStatus('success')
+    const result = await dispatch(submitContact(fields))
+    if (submitContact.fulfilled.match(result)) {
       setFields({ name: '', email: '', message: '' })
-    }, 1500)
+    }
   }
 
   const inputBase =
@@ -127,7 +127,7 @@ export default function Contact() {
                   <p className="text-gray-600 dark:text-gray-400 text-sm">I'll get back to you as soon as possible.</p>
                 </div>
                 <button
-                  onClick={() => setStatus('idle')}
+                  onClick={() => dispatch(resetContact())}
                   className="mt-2 text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 transition-colors"
                 >
                   Send another message
@@ -189,17 +189,13 @@ export default function Contact() {
                     disabled={status === 'submitting'}
                     className="mt-1 w-full py-2.5 px-6 rounded-lg bg-indigo-600 hover:bg-indigo-500 disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2"
                   >
-                    {status === 'submitting' ? (
-                      <>
-                        <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
-                        </svg>
-                        Sending…
-                      </>
-                    ) : (
-                      'Send Message'
+                    {status === 'submitting' && (
+                      <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                      </svg>
                     )}
+                    {{ idle: 'Send Message', submitting: 'Sending…', success: 'Sent!', error: 'Try Again' }[status]}
                   </button>
                 </form>
               </>
