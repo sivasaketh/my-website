@@ -16,11 +16,19 @@ const initialState: ContactState = {
   error: null,
 }
 
-// Swap the body of this thunk for a real service (EmailJS, Formspree, etc.)
 export const submitContact = createAsyncThunk(
   'contact/submit',
   async (fields: FormFields) => {
-    await new Promise<void>((resolve) => setTimeout(resolve, 1500))
+    const formId = import.meta.env.VITE_FORMSPREE_ID
+    const res = await fetch(`https://formspree.io/f/${formId}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(fields),
+    })
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}))
+      throw new Error(data?.error ?? 'Submission failed')
+    }
     return fields
   }
 )
